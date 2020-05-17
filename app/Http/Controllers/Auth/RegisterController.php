@@ -25,6 +25,10 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
+         * as LoginController
+     */
+
+    /**
      * Where to redirect users after registration.
      *
      * @var string
