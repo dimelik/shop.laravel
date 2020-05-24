@@ -37,7 +37,11 @@
                     <td>
                         <div class="btn-group" role="group">
                             <a class="btn btn-success" type="button"
-                               href="http://internet-shop.tmweb.ru/person/orders/1"
+                            @admin
+                                href="{{route('orders.show', $order)}}"
+                            @else
+                               href="{{route('person.orders.show', $order)}}"
+                            @endadmin
                             >Открыть</a>
                         </div>
                     </td>
