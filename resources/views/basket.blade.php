@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
 
-                @foreach($order->products as $product)
+                @foreach($order->products()->with('category')->get() as $product)
 
                     <tr>
                     <td>
@@ -49,7 +49,7 @@
                 @endforeach
 
                     <td colspan="3">Общая стоимость:</td>
-                    <td>{{$order->priceOrder()}}₽</td>
+                    <td>{{$order->getFullSum()}}₽</td>
                 </tr>
                 </tbody>
             </table>

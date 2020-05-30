@@ -28,7 +28,7 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Код: </label>
                     <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'code'])--}}
+                        @include('auth.layouts.error', ['fieldName' => 'code'])
                         <input type="text" class="form-control" name="code" id="code"
                                value="@isset($product){{ $product->code }}@endisset">
                     </div>
@@ -37,7 +37,7 @@
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Название: </label>
                     <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'name'])--}}
+                        @include('auth.layouts.error', ['fieldName' => 'name'])
                         <input type="text" class="form-control" name="name" id="name"
                                value="@isset($product){{ $product->name }}@endisset">
                     </div>
@@ -46,7 +46,7 @@
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Название en: </label>
                     <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'name_en'])--}}
+                        {{--                        @include('auth.layouts.error', ['fieldName' => 'name_en'])--}}
                         <input type="text" class="form-control" name="name_en" id="name_en"
                                value="@isset($product){{ $product->name_en }}@endisset">
                     </div>
@@ -55,7 +55,7 @@
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Категория: </label>
                     <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'category_id'])--}}
+                        @include('auth.layouts.error', ['fieldName' => 'category_id'])
                         <select name="category_id" id="category_id" class="form-control">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -73,20 +73,20 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Описание: </label>
                     <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'description'])--}}
-                        <textarea name="description" id="description" cols="72"
+                        @include('auth.layouts.error', ['fieldName' => 'description'])
+                        <textarea name="description" id="description" cols="63"
                                   rows="7">@isset($product){{ $product->description }}@endisset</textarea>
                     </div>
                 </div>
                 <br>
-                <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Описание en: </label>
-                    <div class="col-sm-6">
-{{--                        @include('auth.layouts.error', ['fieldName' => 'description_en'])--}}
-                        <textarea name="description_en" id="description_en" cols="72"
-                                  rows="7">@isset($product){{ $product->description_en }}@endisset</textarea>
-                    </div>
-                </div>
+                {{--                <div class="input-group row">--}}
+                {{--                    <label for="description" class="col-sm-2 col-form-label">Описание en: </label>--}}
+                {{--                    <div class="col-sm-6">--}}
+                {{--                        @include('auth.layouts.error', ['fieldName' => 'description'])--}}
+                {{--                        <textarea name="description_en" id="description_en" cols="72"--}}
+                {{--                                  rows="7">@isset($product){{ $product->description_en }}@endisset</textarea>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <br>
                 <div class="input-group row">
                     <label for="image" class="col-sm-2 col-form-label">Картинка: </label>
@@ -97,25 +97,41 @@
                     </div>
                 </div>
                 <br>
-
                 <div class="input-group row">
-                    <label for="category_id" class="col-sm-2 col-form-label">Свойства товара: </label>
-{{--                    <div class="col-sm-6">--}}
-{{--                        @include('auth.layouts.error', ['fieldName' => 'property_id[]'])--}}
-{{--                        <select name="property_id[]" multiple>--}}
-{{--                            @foreach($properties as $property)--}}
-{{--                                <option value="{{ $property->id }}"--}}
-{{--                                        @isset($product)--}}
-{{--                                        @if($product->properties->contains($property->id))--}}
-{{--                                        selected--}}
-{{--                                    @endif--}}
-{{--                                    @endisset--}}
-{{--                                >{{ $property->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
+                    <label for="price" class="col-sm-2 col-form-label">Цена: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' => 'price'])
+                        <input type="text" name="price" id="price" class="form-control"
+                               value="@isset($product){{ $product->price }}@endisset">
+                    </div>
                 </div>
-                <br>
+                <div class="input-group row">
+                    <label for="count" class="col-sm-2 col-form-label">Количество товара: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' => 'count'])
+                        <input type="text" name="count" id="count" class="form-control"
+                               value="@isset($product){{ $product->count }}@endisset">
+                    </div>
+                </div>
+
+{{--                <div class="input-group row">--}}
+{{--                    <label for="category_id" class="col-sm-2 col-form-label">Свойства товара: </label>--}}
+{{--                    --}}{{--                    <div class="col-sm-6">--}}
+{{--                    --}}{{--                        @include('auth.layouts.error', ['fieldName' => 'property_id[]'])--}}
+{{--                    --}}{{--                        <select name="property_id[]" multiple>--}}
+{{--                    --}}{{--                            @foreach($properties as $property)--}}
+{{--                    --}}{{--                                <option value="{{ $property->id }}"--}}
+{{--                    --}}{{--                                        @isset($product)--}}
+{{--                    --}}{{--                                        @if($product->properties->contains($property->id))--}}
+{{--                    --}}{{--                                        selected--}}
+{{--                    --}}{{--                                    @endif--}}
+{{--                    --}}{{--                                    @endisset--}}
+{{--                    --}}{{--                                >{{ $property->name }}</option>--}}
+{{--                    --}}{{--                            @endforeach--}}
+{{--                    --}}{{--                        </select>--}}
+{{--                    --}}{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <br>--}}
 
                 @foreach ([
                 'hit' => 'Хит',

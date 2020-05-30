@@ -20,22 +20,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($order->products as $product)
+                        @foreach ($products as $product)
                             <tr>
-                                <td>
-                                    <a href="{{ route('product', $product) }}">
+                                <td>{{ $product->name }}
+                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
                                         <img height="56px"
                                              src="{{ Storage::url($product->image) }}">
                                     </a>
                                 </td>
-                                <td><span class="badge"> 1</span></td>
+                                <td><span class="badge"> {{$product->pivot->count}}</span></td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->getPriceForCount() }}</td>
                             </tr>
                         @endforeach
                         <tr>
                             <td colspan="3">Общая стоимость:</td>
-                            <td>{{$order->priceOrder()}}</td>
+                            <td>{{$order->calculateFullSum()}}</td>
                         </tr>
                         </tbody>
                     </table>

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Person;
 
 use App\Http\Controllers\Controller;
-use App\Order;
+use App\Models\Order;
 use Auth;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -16,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->orders()->where('status',1)->get();
+        $orders = Auth::user()->orders()->active()->paginate(10);
         return view('auth.orders.main', compact('orders'));
     }
     public function show(Order $order)

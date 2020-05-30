@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Category;
-use App\Product;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -92,11 +92,11 @@ class ProductController extends Controller
             $params['image'] = $request->file('image')->store('products');
         }
 
-//        foreach (['new', 'hit', 'recommend'] as $fieldName) {
-//            if (!isset($params[$fieldName])) {
-//                $params[$fieldName] = 0;
-//            }
-//        }
+        foreach (['new', 'hit', 'recommend'] as $fieldName) {
+            if (!isset($params[$fieldName])) {
+                $params[$fieldName] = 0;
+            }
+        }
 //        $product->properties()->sync($request->property_id);
 
         $product->update($params);
