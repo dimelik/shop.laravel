@@ -13,8 +13,21 @@
             <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
 
             @csrf
-            @else
-                Не доступен
+        </form>
+    @else
+        <span>Не доступен</span>
+        <br>
+        <span>Сообщить, когда появится в наличии:</span>
+        <div class="warning">
+        @if($errors->get('email'))
+                {{$errors->get('email')[0]}}
+            @endif
+        </div>
+        <form method="POST" action="{{route('subscription', $product)}}">
+            @csrf
+            <input type="text" name="email">
+            <button type="submit" role="button">Отправить</button>
+        </form>
     @endif
 @endsection
 
