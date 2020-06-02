@@ -17,7 +17,7 @@
             <h3>{{$product->name}}</h3>
             <p>{{$product->price}} руб.</p>
             <p>
-            <form action="{{route('basket-add', $product->id)}}" method="POST">
+            <form action="{{route('basket-add', $product)}}" method="POST">
                 @if($product->isAvailable())
                     <button type="submit" class="btn btn-primary" role="button">В корзину</button>
                 @else
