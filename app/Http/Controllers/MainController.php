@@ -7,13 +7,13 @@ use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Product;
 use App\Models\Subscription;
+use Illuminate\Support\Facades\App;
 
 
 class MainController extends Controller
 {
     public function index(ProductsFilterRequest $request){
-//        dd($request
-////        ->all());
+//
         $productsQuery = Product::with('category');
 
         if($request->filled('price_from')){
@@ -54,5 +54,17 @@ class MainController extends Controller
             'product_id' => $product->id,
         ]);
         return redirect()->back()->with('success', 'Сообщим вам когда появится товар');
+    }
+
+    public function language($locale)
+    {
+        $locales = ['ru', 'en'];
+        if(!in_array($locale, $locales)){
+            $locale = config('app.locale');
+        }
+
+        session(['locale'=> $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
     }
 }
