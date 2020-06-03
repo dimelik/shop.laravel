@@ -19,18 +19,22 @@ class CurrencySeeder extends Seeder
                 'symbol' => 'Br',
                 'is_main' => 1,
                 'rate' => 1,
+                'updated_at' => '2020-01-01 00:00:00',
+
             ],
             [
                 'code' => 'USD',
                 'symbol' => '$',
                 'is_main' => 0,
-                'rate' => 2.41,
+                'rate' => 0,
+                'updated_at' => '2020-01-01 00:00:00',
             ],
             [
                 'code' => 'EUR',
                 'symbol' => '€',
                 'is_main' => 0,
-                'rate' => 2.81,
+                'rate' => 0,
+                'updated_at' => '2020-01-01 00:00:00',
             ],
         ]);
     }
