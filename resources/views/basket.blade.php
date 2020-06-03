@@ -49,7 +49,7 @@
                 @endforeach
 
                     <td colspan="3">Общая стоимость:</td>
-                    <td>{{$order->getFullSum()}}руб</td>
+                    <td>{{$order->getFullSum()}}{{ App\Services\CurrencyConversion::getCurrencySymbol() }}</td>
                 </tr>
                 </tbody>
             </table>
